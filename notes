@@ -1,0 +1,3 @@
+create company: $.ajax({url:"/me/jobberwocky/api/companies",type:"POST",data:{company:{name:"twitter co."}}})
+apply to company : $.ajax({url:"https://progress.appacademy.io/me/jobberwocky/api/job_applications",type:"POST",data:{job_application:{company_id: 3, ranking: 1, status: "applied", rejected: false, job_title: "developer", job_website: "www.google.com", contact_email: "jobs@google.com", applied_via: "email", }}})
+search for company: https://progress.appacademy.io/me/jobberwocky/api/companies/search?query
