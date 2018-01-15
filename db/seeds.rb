@@ -5,3 +5,14 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Application.create!([
+  {
+    email: "jcompagni@gmail.com",
+    company: "Docker Co",
+    contact_name: "Mr. Bai",
+    position: "Docker Technician",
+    url: "www.juliancompagniportis.com"
+  },
+
+])
