@@ -1,0 +1,2 @@
+module WappalyzerHelper
+end

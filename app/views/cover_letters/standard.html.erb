@@ -7,25 +7,59 @@
 </div>
 <br>
 <%=Date.today.strftime("%B %d, %Y")%> </br></br>
-Dear <%= app.contact_name %>,
+Dear <%= @contact_name[0] %>,
 </br>
 <p>
-  For the last two years I have split my time between woking as a cook and doing freelance web development. While I still love to cook, I have discovered that my true passion lies in solving complex coding problems. I get an immense amount of satisfaction from using technology to solve a particular problem --be it creating the ideal user experience or writing a task specific algorithm. As a freelance web developer I frame my work as providing a unique solution for each client's business needs. I have found that in addition to hard work and determination, the key to tackling a given issue is having the right set of tools. Over the last 5 years I have honed my abilities as a full stack web developer. When it comes to serverside development I have experience in PHP, Ruby and SQL. I have also worked extensively with javascript, both on its own and in conjuction with front end libaries like React, Redux and Vue.js. 
+  I have a confession, I didn’t write this cover letter. In fact, I didn’t write
+  the email either. Everything you have received has been dynamically generated 
+  and sent by a job application program I coded. At the end of the day, I am a 
+  software developer, so I figured I’d avoid the tedium and stick to what I 
+  love: writing creative code to solve real problems. But rest assured, I have 
+  done my research and I am genuinely interested in the <%= app.position %> role
+  for which you are hiring. @fit_snippet. 
 </p>
 <p>
-  Most recently I have made use of these skills while building a coding challenge website that allowed users to compete in timed coding tasks. In order to handle user authentication and to track user progress across multiple levels I built a Rails backend with a PostgreSQL database. At the crux of the project was a custom code evaluation system; for this purpose I made use of an AWS Lamda to safely evaluate and test user written code. Finally, I coupled all of this with React/Redux on the front end to provide a fluid and engaging user experience. 
-</p>
-  While I have thoroughly enjoyed my work as a freelance webdeveloper, I am excited to transition to a roll where I can solve even bigger problems along with a team of equally passionate developers. While I am highly motivated and task driven as a solo developer, I think I am at my most productive when I can work collaboratively with a team. 
+  In addition to writing automated job application software, I am quite 
+  confident that my technical background is a perfect match for @company. 
+  I have been writing code for over seven years and have been a freelance web 
+  developer for the last three. <%= @stack_snippets %> For more 
+  information on my capabilities and past projects I encourage you to check out
+  my portfolio at juliancompagniportis.com 
 </p>
 <p>
-  Ultimately, I think my specific skills, coupled with my ability to work quickly, adeptness at managing complex projects and deadlines and ongoing passion for new knowledge and growth make me a strong candidate for the <%= app.position %> position at <%= app.company %>. 
+  Ultimately, I don’t define myself by the languages and technologies I 
+  currently know. Whether I am sending out cover letters or building websites I
+  am always on the lookout for innovative technologies and tools that I can use
+  to get the job done better and faster. I find that when I am learning new 
+  technologies and pushing the limits of my abilities is when I perform best as 
+  a developer, and quite honestly, when I am having the most fun. For this
+   reason, I am incredibly excited to work for a company that <%= @purpose_snippet %>
 </p>
-</br>
-Thanks so much for your consideration, 
+<p>
+  While I have thoroughly enjoyed my work as a freelance web developer, 
+  I am excited to transition to a roll where I can solve even bigger problems
+  alongside a team of equally passionate developers. While I am highly 
+  motivated and task driven as a solo developer, I think I am at my most 
+  productive when I can work with, and learn from those around me. For this 
+  reason, I am very attracted to <%= @company %>’s devotion to creating an 
+  engaging, collaborative and forward looking corporate culture.   
+</p>
+
+<p>
+  I look forward to connecting with you via phone or email to hear more 
+  about <%= @company %> further discuss my fit for this position.
+</p>
+
 </br>
 </br>
 </br>
 Sincerely,</br>
 </br>
-Julian Compagni Portis
+Julian Compagni Portis </br>
+415.710.1111 </br>
+www.juliancompagniportis.com </br>
+</br>
+
+p.s. If you’re curious about the code I wrote to generate this cover letter feel free to checkout https://github.com/jcompagni10/applied
+ 
 

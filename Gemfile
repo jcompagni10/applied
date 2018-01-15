@@ -26,6 +26,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
+gem 'wappalyzer_rb'
+gem 'httparty'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password

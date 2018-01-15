@@ -8,11 +8,11 @@
 
 Application.create!([
   {
-    email: "jcompagni@gmail.com",
-    company: "Docker Co",
-    contact_name: "Mr. Bai",
-    position: "Docker Technician",
+    email: "trwong93@gmail.com",
+    company: "MatchBox",
+    contact_name: "Taylor Wong",
+    position: "Match Light",
     url: "www.juliancompagniportis.com"
-  },
+  }
 
 ])
