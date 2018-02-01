@@ -48,7 +48,7 @@ class Application < ApplicationRecord
     list = File.open(Dir.glob("#{Rails.root}/app/models/app_list.txt")[0])
     list.readlines.each do |line|
       url, tag = line.chomp.split(" ")
-      Application.parse_listing_SO(url, tag)
+      Application.parse_listing_indeed(url, tag)
     end
   end
 
@@ -98,7 +98,6 @@ class Application < ApplicationRecord
   
     listing_page = HTTParty.get(url)
     parsed_listing = Nokogiri::HTML(listing_page)
-  
     app["company"] = parsed_listing.css('.company')[0].children.text
     position = parsed_listing.css(".jobtitle font")[0].children.text
       .split(',')[0]

@@ -3,16 +3,16 @@ class ApplicationMailer < ActionMailer::Base
 
   def fit
     {
-      productivity: "If its not not already apparent, productivity and efficient workflow is very important to me, so I would be honored to work at a company whose core mission is building innovative tools to allow companies to work smarter",
-      food: "Sharing good food with those around me has always been an important part of my life. Before transitioning into working full time as web developer I worked as a cook on an oil rig. So I am incredibly passionate about leveraging technology to make great food more easily accessible",
-      iot: "If its not not already apparent, using technology to make life easier is very important to me. I think IoT is the next big frontier as we look to simplify our lives and streamline out daily activities. I would be honored to work at a company whose core mission is building innovative tools to allow people to work smarter",
-      advertising: "Before working as a freelance web developer I interned at the Goodby Silverstein Ad Agency. That experience has had a profound effect on how I think about building and marketing websites. Furthermore in much of my past work I have done a lot of SEO and SEA. I have also worked extensively with online advertising tools like Google adWords and Facebook Ads",
-      fintech: "In addition to my background in web development, I have a true passion for business and economics. I graduated with a BA in economics and have been involved in the advertising and business operations of several companies. Even as a web developer I am confident that this background will allow me to write code with a greater focus on the end product",
-      blockchain: "I have been using blockchain technology and crypto-currency for the last 5 years. I would be honored to work for a company that is helping revolutionize the way we store transactional information",
-      travel: "I have always been passionate about travel and exploring the world around me. I would be honored to work in a role where I can help facilitate that experience for others",
-      ecommerce: "As a freelance developer I have worked extensivley in the eCommerce space. Over the last 3 years I have built a number of eCommerce platforms and am familiar with many of the challenges particular to the eCommerce industry",
-      data: "I am more convinced than ever that the way we manage data is quickly becoming outdated. I would be honored to work a company that is on the forefront of this revolution. ",
-      default: "If its not not already apparent, I am very passionate about using technology to develop creative solutions to real problems, so I would be honored to work at a company where innovation is held in such high regard"
+      productivity: "If its not not already apparent, productivity and efficient workflow is very important to me, so I would be honored to work at a company whose core mission is building innovative tools to allow companies to work smarter.",
+      food: "Sharing good food with those around me has always been an important part of my life. Before transitioning into working full time as web developer I worked as a cook on an oil rig. So I am incredibly passionate about leveraging technology to make great food more easily accessible.",
+      iot: "If its not not already apparent, using technology to make life easier is very important to me. I think IoT is the next big frontier as we look to simplify our lives and streamline out daily activities. I would be honored to work at a company whose core mission is building innovative tools to allow people to work smarter.",
+      advertising: "Before working as a freelance web developer I interned at the Goodby Silverstein Ad Agency. That experience has had a profound effect on how I think about building and marketing websites. Furthermore in much of my past work I have done a lot of SEO and SEA. I have also worked extensively with online advertising tools like Google adWords and Facebook Ads.",
+      fintech: "In addition to my background in web development, I have a true passion for business and economics. I graduated with a BA in economics and have been involved in the advertising and business operations of several companies. Even as a web developer I am confident that this background will allow me to write code with a greater focus on the end product.",
+      blockchain: "I have been using blockchain technology and crypto-currency for the last 5 years. I have no doubt that blockchain will play crucial role in revolutionizing our economy and the way we track transactional information. I would be honored to be a part of that revolution.",
+      travel: "I have always been passionate about travel and exploring the world around me. I would be honored to work in a role where I can help facilitate that experience for others.",
+      ecommerce: "As a freelance developer I have worked extensivley in the eCommerce space. Over the last 3 years I have built a number of eCommerce platforms and am familiar with many of the challenges particular to the eCommerce industry.",
+      data: "I am more convinced than ever that the way we manage data is quickly becoming outdated. I would be honored to work a company that is on the forefront of this revolution. .",
+      default: "If its not not already apparent, I am very passionate about using technology to develop creative solutions to real problems, so I would be honored to work at a company where innovation is held in such high regard."
     } 
   end
 
@@ -24,19 +24,22 @@ class ApplicationMailer < ActionMailer::Base
       iot: "has been been a pioneer in changing the way we interact with everyday objects and technology.",
       data: "is pioneering the future of digital data storage and management.",
       ecommerce: "is pioneering the future of eCommerece, and revolutionizing the digitial shopping experience.",
-      blockchain: "is pioneering the future of blockchain infrastructure.",
+      blockchain: "is pioneering the future of blockchain technology.",
       default: "puts an emphasis on finding creative ways solve real problems."
       
     }
   end
 
   def application_email(app)
-    @position = app.position.split(" ").take(4).join(" ")
+    @position = app.position.split('(')[0]
+    .split(',')[0]
+    .split(" ").take(4)
+    .join(" ")
     @company = Application.title_case(app.company)
     @contact_name = app.contact_name
     app.tag = "default" if app.tag.nil?
     @fit_snippet = fit[app.tag.to_sym] || fit[:default]
-    @purpose_snippet = purpose[app.tag] || purpose[:default]
+    @purpose_snippet = purpose[app.tag.to_sym] || purpose[:default]
     front_end_snippet = front_end_snippet(app.fe_stack)
     back_end_snippet = back_end_snippet(app.be_stack)
     other_tech_snippet = other_tech_snippet(app.other_stack)

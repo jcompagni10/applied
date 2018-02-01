@@ -4,7 +4,7 @@ class StaticPageController < ApplicationController
   end
 
   def send_mail
-    applications = Application.where('sent is false').take(10)
+    applications = Application.where.not('sent').where("email != ''")
     sent = []
     begin 
       applications.each do |app|

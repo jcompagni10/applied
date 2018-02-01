@@ -9,6 +9,6 @@ $.get("https://progress.appacademy.io/me/jobberwocky/api/companies/search?query=
   response.find(r => r.name.toLowerCase()=== app.company.toLowerCase()))
   || $.post({url:"/me/jobberwocky/api/companies",data:{company:{name: app.company}}})
 ).then(a => (
-  $.post({url:"/me/jobberwocky/api/job_applications",data:{job_application:{company_id: a.id, ranking: 3, status: "applied", rejected: false, job_title: app.position, job_site: app.url, contact_email: app.email, applied_via: app.source,company_blurb: "angellist post" }}})
+  $.post({url:"/me/jobberwocky/api/job_applications",data:{job_application:{company_id: a.id, ranking: 2, status: "applied", rejected: false, job_title: app.position, job_site: app.url, contact_email: app.email, applied_via: "email",company_blurb: app.source }}})
 )).catch("something broke man")));alert("Logged " +apps.length + "applications");
 </code>
