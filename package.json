@@ -1,6 +1,7 @@
 {
   "name": "Applied",
   "private": true,
+  "homepage": "https://github.com/jcompagni10/code-ninja#readme",
   "dependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
@@ -38,6 +39,5 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/jcompagni10/code-ninja/issues"
-  },
-  "homepage": "https://github.com/jcompagni10/code-ninja#readme"
+  }
 }

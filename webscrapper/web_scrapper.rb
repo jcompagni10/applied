@@ -32,28 +32,38 @@ end
 # company title, job title, website, email, 
 job_details_array = []
 job_listing_url = 'https://www.indeed.com/viewjob?jk=63869f0a25b3e2eb&from=tp-serp&tk=1c3rin8hg1fq67fr'
-job_info = Hash.new
 
-listing_page = HTTParty.get(job_listing_url)
-parse_listing = Nokogiri::HTML(listing_page)
+def parse_listing(url)
+  frontend = ["javasript", "react", "redux", "vue", "jquery", "bootstrap"]
+  backend = ["php", "ruby", "rails", "python", "sql"]
+  other = ["webpack", "git", "rspec", "capybara", "npm", "aws"]
 
-job_info["company_name"] = parse_listing.css('.company')[0].children.text
-job_info["job_title"] = parse_listing.css(".jobtitle font")[0].children.text
+  app = {}
 
-frontend = ["javasript", "react", "redux", "vue", "jquery", "html", "css", "bootstrap"]
-backend = ["php", "ruby", "rails", "python", "sql", "aws"]
-other = ["webpack", "git", "rspec", "capybara", "google analytics", "npm", "aws"]
+  listing_page = HTTParty.get(url)
+  parsed_listing = Nokogiri::HTML(listing_page)
 
-frontend_match = []
-backend_match = []
-other_match = []
-matches = [frontend_match, backend_match, other_match]
+  app["company"] = parsed_listing.css('.company')[0].children.text
+  app["position"] = parsed_listing.css(".jobtitle font")[0].children.text
 
-job_summary = parse_listing.css('#job_summary')[0].text.downcase
-[frontend, backend, other].each_with_index do |arr, i|
-  arr.each do |el|
-    matches[i] << el if job_summary.include?(el)
+
+  frontend_match = []
+  backend_match = []
+  other_match = []
+  matches = [frontend_match, backend_match, other_match]
+
+  job_summary = parsed_listing.css('#job_summary')[0].text.downcase
+  [frontend, backend, other].each_with_index do |arr, i|
+    arr.each do |el|
+      matches[i] << el if job_summary.include?(el)
+    end
   end
+  app[:fe_stack] = matches[0]
+  app[:be_stack] = matches[1]
+  app[:other_stack] = matches[1]
+  app[:url] = url
+  Application.create(app)
 end
 
-Pry.start(binding)
+parse_listing('https://www.indeed.com/viewjob?jk=63869f0a25b3e2eb&from=tp-serp&tk=1c3rin8hg1fq67fr')
+

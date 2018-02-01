@@ -4,13 +4,23 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    Dear <%= @contact_name %>
+    <% if @contact_name.blank? %>
+      Hello,
+    <% else %>
+      Dear <%= @contact_name.split(" ")[0] %>,
+    <% end %> 
     <p>
      I am very interested in the <%=@position %> position at <%=@company %>.
     </p>
-    I have no doubt that my 2+ years of experience as a freelance web developer will 
-    translate well to the work at <%= @company %>. For more information about my 
-    past experience and qualifications please see my attached resume and cover letter. 
+    <p>
+      For the last 3 years I have been working as a full-stack web developer with a passion
+      for building innovative digital applications. I am very excited by the innovative work you are
+      doing at <%=@company%> and I think my background would make me an excellent asset to your team. 
+    </p>
+    <p>
+      I have a couple questions about the job and would love to connect with you to discuss further.
+      For more information about my past experience and qualifications please see my attached resume and cover letter. 
+    </p>
     <br>
     <br>
     Sinercely,<br>

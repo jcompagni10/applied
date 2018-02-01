@@ -6,9 +6,9 @@ apps =
 <%= @applications.to_json %>;
 apps.forEach(app =>(
 $.get("https://progress.appacademy.io/me/jobberwocky/api/companies/search?query="+app.company).then(response => (
-  response.find(r => r.name === app.company))
+  response.find(r => r.name.toLowerCase()=== app.company.toLowerCase()))
   || $.post({url:"/me/jobberwocky/api/companies",data:{company:{name: app.company}}})
 ).then(a => (
-  $.post({url:"/me/jobberwocky/api/job_applications",data:{job_application:{company_id: a.id, ranking: 1, status: "applied", rejected: false, job_title: app.position, job_site: app.url, contact_email: app.email, applied_via: "email", }}})
-)).then(()=>alert("all done")).catch("something broke man")));
+  $.post({url:"/me/jobberwocky/api/job_applications",data:{job_application:{company_id: a.id, ranking: 3, status: "applied", rejected: false, job_title: app.position, job_site: app.url, contact_email: app.email, applied_via: app.source,company_blurb: "angellist post" }}})
+)).catch("something broke man")));alert("Logged " +apps.length + "applications");
 </code>
